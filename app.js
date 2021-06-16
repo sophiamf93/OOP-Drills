@@ -68,7 +68,7 @@ class People {
         this.city = city;
         this.age = age;
     }
-    
+
     greet() {
         console.log((`Hey! My name is ${this.name} and I am ${this.age} years old and live in ${this.city}.`))
     }
@@ -99,6 +99,7 @@ class Vehicle {
     }
 };
 
+
 class Sedan extends Vehicle {
     constructor(type, manufacturer, wheels, doors, size, mpg) {
         super(type, manufacturer, wheels);
@@ -107,10 +108,26 @@ class Sedan extends Vehicle {
         this.mpg = mpg;
     }
     aboutVehicle() {
-        console.log(`This vehicle is a ${this.size} sized ${this.type} and made by ${this.manufacturer}. It has ${this.wheels} wheels, ${this.doors} doors, and gets ${this.mpg} mpg.`)
+        console.log(`This vehicle is a ${this.type} made by ${this.manufacturer} and has ${this.wheels} wheels. Has ${this.doors} doors, is a ${this.size} vehicle, and gets ${this.mpg} mpg.`)
     }
 }
 
+class Truck extends Vehicle {
+    constructor(type, manufacturer, wheels, hasTruckBed, doors, size, mpg) {
+        super(type, manufacturer, wheels);
+        this.hasTruckBed = hasTruckBed;
+        this.doors = doors;
+        this.size = size;
+        this.mpg = mpg;
+    }
+    aboutVehicle() {
+        if (this.hasTruckBed) {
+            console.log(`This vehicle is a ${this.size} sized ${this.type}. It has a truck bed and made by ${this.manufacturer}. It has ${this.wheels} wheels, ${this.doors} doors, and gets ${this.mpg} mpg.`)
+        } else {
+            console.log(`This vehicle is a ${this.size} sized ${this.type}. It does not have a truckbed and made by ${this.manufacturer}. It has ${this.wheels} wheels, ${this.doors} doors, and gets ${this.mpg} mpg.`)
+        }
+    }
+}
 class Motorcycle extends Vehicle {
     constructor(type, manufacturer, wheels, steering, doors,) {
         super(type, manufacturer, wheels);
@@ -125,5 +142,8 @@ class Motorcycle extends Vehicle {
 v1 = new Sedan('Camry', 'Toyota', 4, 4, 'medium', 35)
 v1.aboutVehicle();
 
-v2 = new Motorcycle('Roadster', 'Harley Davidson', 2, 'handlebars', 0)
+v2 = new Truck('Tundra', 'Toyota', true, 4, 4, 'large', 25)
 v2.aboutVehicle();
+
+v3 = new Motorcycle('Roadster', 'Harley Davidson', 2, 'handlebars', 0)
+v3.aboutVehicle();
